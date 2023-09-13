@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='/style.css') }}">
+    <title>Cooooookies</title>
+</head>
+<body>
+    <h1 class="text-center"> Log a New Order </h1>
+    <a href="/show_orders">Back to purchases</a>
+    <form action="/cookies/" method="post" class="p-3 col-4 mx-auto my-5 bg-dark text-light">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+            <div class="form-group">
+                <label for="customer_name"> Name: </label>
+                <input type="text" name="customer_name" id="name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="cookie_type">Cookie Type: </label>
+                <input type="text" name="cookie_type" id="cookie_type" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="num_of_boxes">Number of boxes: </label>
+                <input type="number" min="0" name="num_of_boxes" id="num_of_boxes" class="form-control">
+            </div>
+            <input type="submit" value="Log" class="btn btn-primary btn-outline-light">
+    </form>
+</body>
+</html>

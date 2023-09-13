@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='/style.css') }}">
+    <title>Cooooookies</title>
+</head>
+<body>
+    <h1 class="text-center"> Cookie Orders </h1><br></br>
+    <h2> All orders: </h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"> Customer Name: </th> 
+                <th scope="col"> Cookie Type: </th> 
+                <th scope="col"> Number of Boxes: </th> 
+                <th scope="col"> Actions: </th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td> {{ order.customer_name }}.</td>
+                <td> {{ order.cookie_type }}.  </td>
+                <td> {{ order.num_of_boxes }}</td> 
+                <td> <a href="/edit_order/{{ order.id }}"> Edit</a>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table><br></br> 
+    <a href="/"> + New Order</a>
+</body>
+</html>
